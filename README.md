@@ -14,3 +14,4 @@ External Files:
   2. If only anatomical data is given -> run simulation for -20 to 20 (angle range customizable) with graphical input for misalignments
   3. External_Data folder > Data (anatomical + motion data) is given -> run simulation for a specific individual > for a specific trial of that motion type > for a specific limit of cells in excel sheet as well for whole
   4. External_Data folder > Data (anatomical + motion data) is given -> run simulations for all individuals for all trials (run by default)
+
