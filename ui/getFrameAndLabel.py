@@ -1,3 +1,9 @@
+"""
+AFOMS: Ankle-Foot-Orthoses Misalignment Simulator
+
+@Author: Badari Vishal Kandacharam
+"""
+
 import customtkinter as ctk
 
 # Function to create a custom Frame and a Label inside it

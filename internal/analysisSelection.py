@@ -1,4 +1,12 @@
+"""
+AFOMS: Ankle-Foot-Orthoses Misalignment Simulator
 
+@Author: Badari Vishal Kandacharam
+"""
+
+from internal.typicalCustomUseCase import typicalCustomUseCase
+
+# Backend Function for the "Go" button in AFOMS.py
 def analysisSelectionGo(root, analysisSelectionTypes, 
                         analysisSelectionType, uiList):
 
@@ -8,12 +16,12 @@ def analysisSelectionGo(root, analysisSelectionTypes,
     selection = analysisSelectionType.get()
     analysisSelection(root, selection, analysisSelectionTypes)
 
-
+# Function to initiate the selection-based analysis
 def analysisSelection(root, selection, 
                       analysisSelectionTypes):
     
     if selection == analysisSelectionTypes[0]:
-        print("Typical")
+        typicalCustomUseCase(root)
     elif selection == analysisSelectionTypes[1]:
         print("Graphical")
     elif selection == analysisSelectionTypes[2]:

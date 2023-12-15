@@ -6,6 +6,7 @@ AFOMS: Ankle-Foot-Orthoses Misalignment Simulator
 
 # Imports
 import customtkinter as ctk
+from PIL import Image
 
 from ui.getFrameAndLabel import getFrameAndLabel
 from internal.analysisSelection import analysisSelectionGo
@@ -25,7 +26,7 @@ root.geometry("{}x{}+0+0".format(root_width,root_height)) # Window geometry
                                 "#6082B6",
                                 "AFOMS: Ankle-Foot-Orthosis Misalignment Simulator", 
                                 {"style":"Times New Roman", "size":30, "weight":"normal"}, 
-                                "#000000", [60, 0])
+                                "#000000", [60, 0], sticky="")
 ##
 
 ## UI: Analysis Type Selection
