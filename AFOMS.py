@@ -6,15 +6,22 @@ AFOMS: Ankle-Foot-Orthoses Misalignment Simulator
 
 # Imports
 import customtkinter as ctk
-from PIL import Image
+import PIL
 import os
 import sys
 import traceback
+import logging
 
+from internal.loggingConfig import setup_logging
 from ui.getFrameAndLabel import getFrameAndLabel
 from internal.analysisSelection import analysisSelectionGo
 
 try:
+    # Setting up the logging configuration
+    setup_logging()
+    logging.info("Logfile configuration setup complete.")
+    logging.info("AFOMS application has started.")
+
     # UI
     root = ctk.CTk()  # Main Window Object
     root_width = root.winfo_screenwidth()  # Screen width
@@ -34,7 +41,7 @@ try:
         {"style": "Times New Roman", "size": 30, "weight": "normal"},
         "#000000",
         [60, 0],
-        sticky="",
+        sticky="nsw",
     )
     ##
 
@@ -112,7 +119,13 @@ try:
 
 except Exception as e:
     print("Error occured while running AFOMS application.")
+    logging.error("Error occured while running AFOMS application.")
     print(
+        "Error occured in the File: {}; Directory: {}".format(
+            os.path.basename(__file__), os.path.dirname(os.path.abspath(__file__))
+        )
+    )
+    logging.error(
         "Error occured in the File: {}; Directory: {}".format(
             os.path.basename(__file__), os.path.dirname(os.path.abspath(__file__))
         )
@@ -122,7 +135,13 @@ except Exception as e:
             os.path.basename(__file__), traceback.extract_tb(sys.exc_info()[-1])[-1][1]
         )
     )
+    logging.error(
+        "Error occured in the File: {} at Line: {}".format(
+            os.path.basename(__file__), traceback.extract_tb(sys.exc_info()[-1])[-1][1]
+        )
+    )
     print("Error: {}".format(e))
+    logging.error("Error: {}".format(e))
 
 finally:
     root.mainloop()

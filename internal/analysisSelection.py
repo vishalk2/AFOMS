@@ -7,6 +7,7 @@ AFOMS: Ankle-Foot-Orthoses Misalignment Simulator
 import os
 import sys
 import traceback
+import logging
 
 from internal.typicalCustomUseCase import typicalCustomUseCase
 
@@ -26,7 +27,14 @@ def analysisSelectionGo(root, analysisSelectionTypes, analysisSelectionType, uiL
         analysisSelection(root, selection, analysisSelectionTypes)
 
     except Exception as e:
+        print("Error occured while running AFOMS application.")
+        logging.error("Error occured while running AFOMS application.")
         print(
+            "Error occured in the File: {}; Directory: {}".format(
+                os.path.basename(__file__), os.path.dirname(os.path.abspath(__file__))
+            )
+        )
+        logging.error(
             "Error occured in the File: {}; Directory: {}".format(
                 os.path.basename(__file__), os.path.dirname(os.path.abspath(__file__))
             )
@@ -37,12 +45,20 @@ def analysisSelectionGo(root, analysisSelectionTypes, analysisSelectionType, uiL
                 traceback.extract_tb(sys.exc_info()[-1])[-1][1],
             )
         )
+        logging.error(
+            "Error occured in the File: {} at Line: {}".format(
+                os.path.basename(__file__),
+                traceback.extract_tb(sys.exc_info()[-1])[-1][1],
+            )
+        )
         print("Error: {}".format(e))
+        logging.error("Error: {}".format(e))
 
 
 # Function to initiate the selection-based analysis
 def analysisSelection(root, selection, analysisSelectionTypes):
     try:
+        logging.info("Analysis selected: {}".format(selection))
         if selection == analysisSelectionTypes[0]:
             typicalCustomUseCase(root)
         elif selection == analysisSelectionTypes[1]:
@@ -54,7 +70,13 @@ def analysisSelection(root, selection, analysisSelectionTypes):
 
     except Exception as e:
         print("Error occured while running AFOMS application.")
+        logging.error("Error occured while running AFOMS application.")
         print(
+            "Error occured in the File: {}; Directory: {}".format(
+                os.path.basename(__file__), os.path.dirname(os.path.abspath(__file__))
+            )
+        )
+        logging.error(
             "Error occured in the File: {}; Directory: {}".format(
                 os.path.basename(__file__), os.path.dirname(os.path.abspath(__file__))
             )
@@ -65,4 +87,11 @@ def analysisSelection(root, selection, analysisSelectionTypes):
                 traceback.extract_tb(sys.exc_info()[-1])[-1][1],
             )
         )
+        logging.error(
+            "Error occured in the File: {} at Line: {}".format(
+                os.path.basename(__file__),
+                traceback.extract_tb(sys.exc_info()[-1])[-1][1],
+            )
+        )
         print("Error: {}".format(e))
+        logging.error("Error: {}".format(e))
